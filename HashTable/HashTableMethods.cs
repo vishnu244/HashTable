@@ -14,8 +14,7 @@ namespace HashTable
         public HashTableMethods(int maxTableSize)//Constructor
         {
             tableSize = maxTableSize;
-            Keys = new MyMapNode<K, V>[tableSize];
-            
+            Keys = new MyMapNode<K, V>[tableSize];           
         }
         public int HashFunction(K key)
         {
@@ -33,17 +32,6 @@ namespace HashTable
                 Keys[genIndex] = new MyMapNode<K, V>() { Key = key, Value = value };
                 return;
             }
-
-           /* if (node.Key.Equals( key))
-                throw new Exception("Can't use same key!");
-
-            while (node.Next != null)
-            {
-                node = node.Next;
-                if (node.Key.Equals(key))
-                    throw new Exception("Can't use same key!");
-            }*/
-
             MyMapNode<K,V> newNode = new MyMapNode<K, V>() { Key = key, Value = value, Previous = node, Next = null };
             node.Next = newNode;
         }
@@ -61,10 +49,6 @@ namespace HashTable
                 node = node.Next;
             }
             return default(V);
-
-            //throw new Exception("Don't have the key in hash!");
         }
-
-
     }
 }
